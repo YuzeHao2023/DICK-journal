@@ -1,0 +1,37 @@
+---
+import { withBase } from "../lib/paths";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-kicker">Disciplinary Inquiries into Casual Knowledge (DICK)</p>
+      <p class="footer-copy">
+        A premium Astro demo showcasing academic publishing flows, article archives, and metadata-rich
+        research pages.
+      </p>
+    </div>
+
+    <div>
+      <p class="footer-heading">Navigate</p>
+      <ul class="footer-links">
+        <li><a href={withBase("articles/")}>Article Archive</a></li>
+        <li><a href={withBase("columns/")}>Columns</a></li>
+        <li><a href={withBase("submit/")}>Submission Pipeline</a></li>
+        <li><a href={withBase("policies/")}>Policies & Ethics</a></li>
+        <li><a href={withBase("membership/")}>Membership</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="footer-heading">Demo Notes</p>
+      <p class="footer-copy">
+        This site is a demonstration interface. Pricing, forms, and publication services shown here are
+        placeholders.
+      </p>
+      <p class="footer-meta">Copyright {year} DICK Journal Demo</p>
+    </div>
+  </div>
+</footer>

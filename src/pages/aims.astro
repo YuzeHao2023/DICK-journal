@@ -1,0 +1,100 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { withBase } from "../lib/paths";
+---
+
+<SiteLayout
+  title="Aims & Scope"
+  description="Aims and scope for the DICK journal demo, covering casual knowledge, informal expertise, and everyday inquiry."
+>
+  <section class="page-head">
+    <div class="container">
+      <div class="panel page-head__panel">
+        <span class="eyebrow">Aims & Scope</span>
+        <h1>Researching everyday expertise with disciplinary seriousness</h1>
+        <p>
+          Disciplinary Inquiries into Casual Knowledge (DICK) publishes scholarship on how practical knowledge is
+          produced, circulated, contested, and stabilized in ordinary life. The journal demo is designed to feel
+          institutional, legible, and methodologically exacting.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-columns">
+      <div class="panel prose-panel">
+        <div class="prose">
+          <h2>Scope of inquiry</h2>
+          <p>
+            We welcome work that examines informal guidance, everyday heuristics, lay expertise, practical rumor,
+            situated instruction, and emergent norms of credibility in daily interaction.
+          </p>
+          <p>
+            Submissions may be qualitative, quantitative, mixed-methods, historical, conceptual, or computational,
+            provided they clearly define the object of inquiry and the evidentiary basis for their claims.
+          </p>
+
+          <h2>Priority contributions</h2>
+          <ul>
+            <li>Empirical studies of knowledge transmission in public, domestic, institutional, or hybrid settings.</li>
+            <li>Methods papers that improve transparency, coding reliability, or field-note traceability.</li>
+            <li>Replication studies that test portability across contexts, cultures, and infrastructures.</li>
+            <li>Scholarly interventions that refine concepts used to describe informal expertise.</li>
+          </ul>
+
+          <h2>What we do not publish</h2>
+          <p>
+            The journal does not prioritize purely anecdotal pieces, unverified claims presented as social fact,
+            or descriptive narratives without a stated analytical framework.
+          </p>
+          <p>
+            We also discourage submissions that rely on "common sense" categories without showing how those
+            categories were operationalized in the research process.
+          </p>
+        </div>
+      </div>
+
+      <aside class="panel info-card">
+        <div>
+          <h2>Accepted formats</h2>
+          <ul class="timeline">
+            <li>
+              <div>
+                <strong>Research articles</strong>
+                <span>Full-length studies with clear methods, evidence, and argumentation.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Methods notes</strong>
+                <span>Protocols, coding designs, and instrumentation refinements.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Replication reports</strong>
+                <span>Reproductions, robustness checks, and transferability analyses.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Opinion pieces</strong>
+                <span>Argued interventions grounded in disciplinary literature.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Next step</h2>
+          <p>Review editorial expectations and submission mechanics before sending a manuscript.</p>
+          <div class="cta-row">
+            <a class="button button--secondary" href={withBase("policies/")}>Read policies</a>
+            <a class="button" href={withBase("submit/")}>Go to submit page</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</SiteLayout>

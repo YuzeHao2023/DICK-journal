@@ -1,0 +1,60 @@
+---
+import { stripBase, withBase } from "../lib/paths";
+
+const currentPath = normalizePath(stripBase(Astro.url.pathname));
+
+const navItems = [
+  { href: withBase(""), label: "Home" },
+  { href: withBase("articles/"), label: "Articles" },
+  { href: withBase("columns/"), label: "Columns" },
+  { href: withBase("aims/"), label: "Aims & Scope" },
+  { href: withBase("policies/"), label: "Policies" },
+  { href: withBase("submit/"), label: "Submit" },
+  { href: withBase("membership/"), label: "Membership" },
+];
+
+function isActive(href: string): boolean {
+  const targetPath = normalizePath(stripBase(new URL(href, "https://example.org").pathname));
+
+  if (targetPath === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath === targetPath || currentPath.startsWith(`${targetPath}/`);
+}
+
+function normalizePath(pathname: string): string {
+  if (!pathname || pathname === "/") {
+    return "/";
+  }
+
+  return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+}
+---
+
+<header class="site-header">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="container header-inner">
+    <div class="brand-block">
+      <a class="brand-mark" href={withBase("")} aria-label="DICK Journal home">
+        DICK
+      </a>
+      <div class="brand-copy">
+        <p class="brand-title">Disciplinary Inquiries into Casual Knowledge</p>
+        <p class="brand-tagline">Academic demo journal for informal expertise research</p>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,17 +1,111 @@
 ---
+import { getCollection } from "astro:content";
+import ArticleCard from "../components/ArticleCard.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { sortArticlesDesc } from "../lib/articles";
+import { withBase } from "../lib/paths";
 
+const articles = (await getCollection("articles")).sort(sortArticlesDesc);
+const latestArticles = articles.slice(0, 3);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<SiteLayout
+  title="Disciplinary Inquiries into Casual Knowledge (DICK)"
+  description="A premium academic journal demo focused on informal expertise, everyday knowledge, and careful editorial workflows."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-panel hero-panel--main panel">
+        <span class="eyebrow">Volume 1 • Demo Issue</span>
+        <h1 class="hero-title">Disciplinary Inquiries into Casual Knowledge</h1>
+        <p class="hero-tagline">
+          DICK is a conceptual journal demo for rigorous work on everyday expertise, informal reasoning,
+          situated advice, and the social life of practical knowledge.
+        </p>
+        <p class="hero-lead">
+          Built with Astro and content collections, this site models an editorial experience for research,
+          methods notes, replications, and reflective scholarship in a premium academic presentation.
+        </p>
+        <div class="cta-row" aria-label="Primary actions">
+          <a class="button" href={withBase("submit/")}>Submit a manuscript</a>
+          <a class="button button--secondary" href={withBase("articles/")}>Read latest</a>
+        </div>
+
+        <div class="metric-strip" aria-label="Journal demo metrics">
+          <div class="panel metric-card">
+            <strong>{articles.length}</strong>
+            <span>Demo articles in archive</span>
+          </div>
+          <div class="panel metric-card">
+            <strong>4</strong>
+            <span>Accepted article formats</span>
+          </div>
+          <div class="panel metric-card">
+            <strong>21 days</strong>
+            <span>Target first decision (demo)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <aside class="panel stat-card" aria-labelledby="editorial-focus-heading">
+          <h2 id="editorial-focus-heading">Editorial focus</h2>
+          <p>
+            We publish studies and methodological work that treat everyday exchange as a legitimate site of
+            disciplined inquiry.
+          </p>
+          <div class="stat-list">
+            <div class="stat-item">
+              <strong>Research</strong>
+              <span>Field studies and analytical articles</span>
+            </div>
+            <div class="stat-item">
+              <strong>Methods</strong>
+              <span>Protocols and instrumentation notes</span>
+            </div>
+            <div class="stat-item">
+              <strong>Replication</strong>
+              <span>Robustness and transferability tests</span>
+            </div>
+            <div class="stat-item">
+              <strong>Opinion</strong>
+              <span>Editorial and scholarly interventions</span>
+            </div>
+          </div>
+        </aside>
+
+        <aside class="panel stat-card" aria-labelledby="quick-links-heading">
+          <h2 id="quick-links-heading">Quick links</h2>
+          <p>Explore editorial expectations, review standards, and access routes before preparing a submission.</p>
+          <div class="cta-row">
+            <a class="button button--secondary" href={withBase("aims/")}>Aims &amp; Scope</a>
+            <a class="button button--secondary" href={withBase("policies/")}>Policies</a>
+            <a class="button button--secondary" href={withBase("membership/")}>Membership</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="eyebrow">Latest Articles</span>
+          <h2 class="section-title">Recent publications and methods notes</h2>
+          <p class="section-subtitle">
+            New content is sourced from Astro Content Collections and rendered as static pages for GitHub Pages
+            deployment.
+          </p>
+        </div>
+        <a class="text-link" href={withBase("articles/")}>View full archive</a>
+      </div>
+
+      <div class="article-grid">
+        {latestArticles.map((article) => (
+          <ArticleCard article={article} compact={true} showAbstract={true} />
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>

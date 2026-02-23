@@ -1,0 +1,103 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+  title="Membership"
+  description="Open access vs non-open access explanation and demo pricing cards for the DICK journal site."
+>
+  <section class="page-head">
+    <div class="container">
+      <div class="panel page-head__panel">
+        <span class="eyebrow">Membership & Access</span>
+        <h1>Open access and non-open access routes</h1>
+        <p>
+          This page explains the demo access model used across article pages. OA articles are readable in full, while
+          Non-OA articles expose metadata and abstracts publicly and reserve full text for members.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div class="panel prose-panel">
+        <div class="prose">
+          <h2>Open Access (OA)</h2>
+          <p>
+            OA articles are immediately readable without subscription barriers. In this demo, OA publication is funded
+            through a low article processing charge (APC) paid by authors at acceptance.
+          </p>
+          <p>
+            The OA publishing fee (APC) is <strong>$9.9</strong> one-time. OA articles remain fully visible on article
+            pages, including the complete body text, metadata, and citation tools.
+          </p>
+        </div>
+      </div>
+
+      <div class="panel prose-panel">
+        <div class="prose">
+          <h2>Non-OA</h2>
+          <p>
+            Non-OA articles keep discovery features open: title, authors, metadata, abstract, keywords, and citation
+            tools remain public. The full article body is gated behind a reader membership in this demo.
+          </p>
+          <p>
+            Non-OA reader membership is <strong>$9.9/month</strong>. A separate lifetime support option is also shown
+            below for demonstration purposes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="eyebrow">Demo Pricing</span>
+          <h2 class="section-title">Publishing and membership options</h2>
+          <p class="section-subtitle">
+            These are the exact prices used by the current UI logic: OA publishing fee (APC), Non-OA reader
+            membership, and a simple sponsor tier.
+          </p>
+        </div>
+      </div>
+
+      <div class="pricing-grid">
+        <section class="panel pricing-card">
+          <p class="pricing-card__tier">OA Publishing Fee (APC)</p>
+          <p class="pricing-card__price">$9.9<span class="inline-code"> one-time</span></p>
+          <p class="pricing-card__subtitle">Paid by authors to publish an article as Open Access.</p>
+          <ul class="feature-list">
+            <li>Full-text access for all readers</li>
+            <li>OA badge in archive and article pages</li>
+            <li>License metadata displayed on article page</li>
+          </ul>
+        </section>
+
+        <section class="panel pricing-card is-featured">
+          <p class="pricing-card__tier">Non-OA Reader Membership</p>
+          <p class="pricing-card__price">$9.9<span class="inline-code">/month</span></p>
+          <p class="pricing-card__subtitle">Unlocks full text for Non-OA articles while leaving metadata public.</p>
+          <ul class="feature-list">
+            <li>Full-body access to Non-OA articles (demo)</li>
+            <li>Archive browsing, abstracts, and citation tools</li>
+            <li>Membership paywall messaging support in article pages</li>
+          </ul>
+        </section>
+
+        <section class="panel pricing-card">
+          <p class="pricing-card__tier">Sponsor Us</p>
+          <p class="pricing-card__price">$29.9<span class="inline-code"> one-time</span></p>
+          <p class="pricing-card__subtitle">Lifetime membership tier for demo support and patron-style access.</p>
+          <ul class="feature-list">
+            <li>Lifetime Non-OA access in this demo model</li>
+            <li>Supporter recognition concept (placeholder)</li>
+            <li>No institutional billing or seat management</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

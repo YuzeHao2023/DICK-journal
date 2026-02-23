@@ -1,0 +1,43 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { withBase } from "../lib/paths";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Disciplinary Inquiries into Casual Knowledge (DICK)",
+  description = "A premium academic journal demo exploring casual knowledge, everyday expertise, and informal inquiry.",
+} = Astro.props;
+
+const pageTitle = title.includes("Disciplinary Inquiries into Casual Knowledge")
+  ? title
+  : `${title} | Disciplinary Inquiries into Casual Knowledge (DICK)`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href={withBase("favicon.svg")} />
+    <link rel="icon" href={withBase("favicon.ico")} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <SiteHeader />
+      <main id="content" class="site-main">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

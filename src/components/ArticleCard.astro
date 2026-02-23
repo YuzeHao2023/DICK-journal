@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import type { ArticleEntry } from "../lib/articles";
+import { formatArticleDate, formatAuthors } from "../lib/articles";
+import { withBase } from "../lib/paths";
+
+interface Props {
+  article: ArticleEntry;
+  compact?: boolean;
+  showAbstract?: boolean;
+}
+
+const { article, compact = false, showAbstract = true } = Astro.props;
+const href = withBase(`articles/${article.slug}/`);
+const allColumns = await getCollection("columns");
+const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, column.data.title]));
+---
+
+<article class={`article-card ${compact ? "article-card--compact" : ""}`}>
+  <div class="article-card__meta-row">
+    <span class="badge badge--type">{article.data.articleType}</span>
+    <span class={`badge ${article.data.accessRoute === "OA" ? "badge--oa" : "badge--non-oa"}`}>
+      {article.data.accessRoute}
+    </span>
+    <span class="article-card__date">{formatArticleDate(article.data.published)}</span>
+  </div>
+
+  <h3 class="article-card__title">
+    <a href={href}>{article.data.title}</a>
+  </h3>
+
+  <p class="article-card__authors">{formatAuthors(article.data.authors)}</p>
+
+  {article.data.columns.length > 0 && (
+    <div class="article-card__meta-row" aria-label="Article columns">
+      {article.data.columns.map((columnSlug) => (
+        <a
+          class="badge badge--type"
+          href={withBase(`columns/${columnSlug}/`)}
+          style="text-decoration: none;"
+          title={`Column: ${columnTitleBySlug.get(columnSlug) ?? columnSlug}`}
+        >
+          {columnTitleBySlug.get(columnSlug) ?? columnSlug}
+        </a>
+      ))}
+    </div>
+  )}
+
+  {showAbstract && <p class="article-card__abstract">{article.data.abstract}</p>}
+
+  <div class="article-card__footer">
+    <a class="text-link" href={href}>
+      Read article
+    </a>
+    {article.data.doi && (
+      <a class="text-link muted-link" href={`https://doi.org/${article.data.doi}`} target="_blank" rel="noreferrer">
+        DOI
+      </a>
+    )}
+  </div>
+</article>

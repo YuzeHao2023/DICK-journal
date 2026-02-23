@@ -1,0 +1,117 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { formatArticleDate } from "../../lib/articles";
+import { withBase } from "../../lib/paths";
+
+const columns = (await getCollection("columns")).sort(
+  (a, b) => b.data.updated.getTime() - a.data.updated.getTime(),
+);
+const articles = await getCollection("articles");
+
+type ColumnStats = {
+  total: number;
+  oa: number;
+  nonOa: number;
+};
+
+const statsBySlug = new Map<string, ColumnStats>(
+  columns.map((column) => [column.slug, { total: 0, oa: 0, nonOa: 0 }]),
+);
+
+for (const article of articles) {
+  for (const columnSlug of article.data.columns) {
+    const stats = statsBySlug.get(columnSlug);
+
+    if (!stats) {
+      continue;
+    }
+
+    stats.total += 1;
+    if (article.data.accessRoute === "OA") {
+      stats.oa += 1;
+    } else {
+      stats.nonOa += 1;
+    }
+  }
+}
+
+function statusBadgeClass(status: "Open" | "Closed" | "Seasonal"): string {
+  if (status === "Open") {
+    return "badge badge--oa";
+  }
+
+  if (status === "Closed") {
+    return "badge badge--non-oa";
+  }
+
+  return "badge badge--type";
+}
+---
+
+<SiteLayout
+  title="Columns"
+  description="Editorial columns for themed submissions, calls for papers, and topic-specific article groupings."
+>
+  <section class="page-head">
+    <div class="container">
+      <div class="panel page-head__panel">
+        <span class="eyebrow">Columns</span>
+        <h1>Themed columns and calls for papers</h1>
+        <p>
+          Columns organize recurring topics with dedicated scope notes and call-for-papers guidance. Each column page
+          aggregates related articles and reports a small set of editorial stats.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="article-grid">
+        {columns.map((column) => {
+          const stats = statsBySlug.get(column.slug) ?? { total: 0, oa: 0, nonOa: 0 };
+
+          return (
+            <article class="article-card">
+              <div class="article-card__meta-row">
+                <span class={statusBadgeClass(column.data.status)}>{column.data.status}</span>
+                <span class="article-card__date">Updated {formatArticleDate(column.data.updated)}</span>
+              </div>
+
+              <h2 class="article-card__title">
+                <a href={withBase(`columns/${column.slug}/`)}>{column.data.title}</a>
+              </h2>
+
+              <p class="article-card__authors">{column.data.tagline}</p>
+              <p class="article-card__abstract">{column.data.scope}</p>
+
+              {column.data.editors && column.data.editors.length > 0 && (
+                <p class="article-card__authors">Editors: {column.data.editors.join(", ")}</p>
+              )}
+
+              <dl class="meta-grid">
+                <div class="meta-item">
+                  <dt>Total articles</dt>
+                  <dd>{stats.total}</dd>
+                </div>
+                <div class="meta-item">
+                  <dt>OA / Non-OA</dt>
+                  <dd>
+                    {stats.oa} / {stats.nonOa}
+                  </dd>
+                </div>
+              </dl>
+
+              <div class="article-card__footer">
+                <a class="text-link" href={withBase(`columns/${column.slug}/`)}>
+                  View column
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</SiteLayout>

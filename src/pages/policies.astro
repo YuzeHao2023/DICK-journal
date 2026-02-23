@@ -1,0 +1,78 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+  title="Policies"
+  description="Review process, ethics expectations, and sensitive-topic guidance for the DICK journal demo."
+>
+  <section class="page-head">
+    <div class="container">
+      <div class="panel page-head__panel">
+        <span class="eyebrow">Policies</span>
+        <h1>Review integrity, research ethics, and sensitive-topic handling</h1>
+        <p>
+          DICK is a demonstration journal, but its policy language models serious editorial practice. The aim is
+          to make standards explicit so authors, reviewers, and editors operate with consistent expectations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div class="panel prose-panel">
+        <div class="prose">
+          <h2>Peer review model</h2>
+          <p>
+            The journal uses editor-mediated peer review with at least two expert reviewers for research and
+            replication submissions. Methods notes may proceed with one specialist reviewer and one methodological
+            editor when domain novelty is limited.
+          </p>
+          <ul>
+            <li>Initial editorial screening checks scope fit, clarity, and baseline methodological sufficiency.</li>
+            <li>Reviewer invitations prioritize disciplinary fit and conflict-of-interest screening.</li>
+            <li>Decision letters distinguish required revisions from advisory suggestions.</li>
+            <li>Editors may decline resubmission when core evidentiary issues remain unresolved.</li>
+          </ul>
+
+          <h2>Ethics and transparency</h2>
+          <p>
+            Authors must report ethics review status, consent procedures where applicable, data limitations, and
+            any material constraints affecting reproducibility. If data cannot be shared, the reason must be stated.
+          </p>
+          <p>
+            We encourage codebooks, synthetic examples, and procedural documentation as alternatives when direct
+            release of raw materials would expose participants, workplaces, or vulnerable communities.
+          </p>
+        </div>
+      </div>
+
+      <div class="panel prose-panel">
+        <div class="prose">
+          <h2>Sensitive topics and populations</h2>
+          <p>
+            Research involving minors, protected classes, stigmatized health conditions, precarious labor, or
+            high-surveillance environments requires heightened care in recruitment, reporting, and example selection.
+          </p>
+          <ul>
+            <li>Avoid unnecessary detail that enables re-identification through contextual clues.</li>
+            <li>Separate analytic interpretation from participant characterization.</li>
+            <li>Describe harms, risks, and mitigation strategies in methods and limitations sections.</li>
+            <li>Do not present speculative causal claims as policy recommendations without evidence.</li>
+          </ul>
+
+          <h2>Corrections and post-publication updates</h2>
+          <p>
+            Substantive factual errors may be corrected with editor notes. Retractions are reserved for invalidated
+            findings, severe methodological misrepresentation, or ethical breaches.
+          </p>
+          <p>
+            The demonstration interface can display revised metadata, version notes, and corrected article records
+            if you extend the content schema in a later iteration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

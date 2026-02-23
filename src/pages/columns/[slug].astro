@@ -1,0 +1,164 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import ArticleCard from "../../components/ArticleCard.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { formatArticleDate, sortArticlesDesc } from "../../lib/articles";
+import { withBase } from "../../lib/paths";
+
+interface Props {
+  column: CollectionEntry<"columns">;
+}
+
+export async function getStaticPaths() {
+  const columns = await getCollection("columns");
+
+  return columns.map((column) => ({
+    params: { slug: column.slug },
+    props: { column },
+  }));
+}
+
+const { column } = Astro.props as Props;
+const { Content } = await column.render();
+
+const relatedArticles = (await getCollection("articles"))
+  .filter((article) => article.data.columns.includes(column.slug))
+  .sort(sortArticlesDesc);
+
+const totalArticles = relatedArticles.length;
+const oaCount = relatedArticles.filter((article) => article.data.accessRoute === "OA").length;
+const nonOaCount = totalArticles - oaCount;
+
+const articleTypeOrder = ["Research", "Methods", "Replication", "Opinion"] as const;
+const articleTypeCounts = articleTypeOrder.map((articleType) => ({
+  articleType,
+  count: relatedArticles.filter((article) => article.data.articleType === articleType).length,
+}));
+
+function statusBadgeClass(status: "Open" | "Closed" | "Seasonal"): string {
+  if (status === "Open") {
+    return "badge badge--oa";
+  }
+
+  if (status === "Closed") {
+    return "badge badge--non-oa";
+  }
+
+  return "badge badge--type";
+}
+---
+
+<SiteLayout title={column.data.title} description={column.data.tagline}>
+  <section class="page-head">
+    <div class="container">
+      <div class="panel page-head__panel">
+        <span class="eyebrow">Column</span>
+        <div class="article-actions" style="margin-top: 0.4rem;">
+          <span class={statusBadgeClass(column.data.status)}>{column.data.status}</span>
+          <span class="badge">{totalArticles} article{totalArticles === 1 ? "" : "s"}</span>
+        </div>
+        <h1>{column.data.title}</h1>
+        <p>{column.data.tagline}</p>
+        <p class="article-submeta">Last updated {formatArticleDate(column.data.updated)}</p>
+        <div class="cta-row">
+          <a class="button button--secondary" href={withBase("columns/")}>All columns</a>
+          <a class="button button--secondary" href={withBase("articles/")}>Article archive</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-columns">
+      <div class="panel prose-panel">
+        <div class="prose">
+          <h2>Scope</h2>
+          <p>{column.data.scope}</p>
+
+          <h2>Call for papers</h2>
+          <p>{column.data.callForPapers}</p>
+
+          <h2>Editorial note</h2>
+          <Content />
+        </div>
+      </div>
+
+      <aside class="panel info-card">
+        <div>
+          <h2>Column stats</h2>
+          <div class="metric-strip" style="margin-top: 0;">
+            <div class="panel metric-card">
+              <strong>{totalArticles}</strong>
+              <span>Total articles</span>
+            </div>
+            <div class="panel metric-card">
+              <strong>{oaCount}</strong>
+              <span>OA</span>
+            </div>
+            <div class="panel metric-card">
+              <strong>{nonOaCount}</strong>
+              <span>Non-OA</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2>Article type breakdown</h2>
+          <dl class="meta-grid">
+            {articleTypeCounts.map(({ articleType, count }) => (
+              <div class="meta-item">
+                <dt>{articleType}</dt>
+                <dd>{count}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div>
+          <h2>Editors</h2>
+          {column.data.editors && column.data.editors.length > 0 ? (
+            <ul class="timeline">
+              {column.data.editors.map((editor) => (
+                <li>
+                  <div>
+                    <strong>{editor}</strong>
+                    <span>Column editor</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No editors listed.</p>
+          )}
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="eyebrow">Articles</span>
+          <h2 class="section-title">Articles in this column</h2>
+          <p class="section-subtitle">
+            Entries are sorted by publication date (newest first) and inherit access-route badges from the archive.
+          </p>
+        </div>
+      </div>
+
+      {relatedArticles.length > 0 ? (
+        <div class="article-grid">
+          {relatedArticles.map((article) => (
+            <ArticleCard article={article} />
+          ))}
+        </div>
+      ) : (
+        <div class="panel panel--padded">
+          <p>No articles have been assigned to this column yet.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</SiteLayout>

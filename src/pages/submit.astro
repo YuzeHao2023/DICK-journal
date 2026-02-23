@@ -1,0 +1,122 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+  title="Submit"
+  description="Submission pipeline and editorial steps for the DICK journal demo."
+>
+  <section class="page-head">
+    <div class="container">
+      <div class="panel page-head__panel">
+        <span class="eyebrow">Submit</span>
+        <h1>Submission pipeline</h1>
+        <p>
+          The demo workflow below mirrors a typical editorial process: desk screening, review assignment, decision,
+          and production. Replace the placeholder form link with your real submission system when ready.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="steps-grid" aria-label="Submission stages">
+        <section class="panel step-card">
+          <div class="step-number" aria-hidden="true">1</div>
+          <h3>Desk screen</h3>
+          <p>
+            Editors confirm scope fit, manuscript completeness, and baseline methodological clarity before review.
+          </p>
+        </section>
+
+        <section class="panel step-card">
+          <div class="step-number" aria-hidden="true">2</div>
+          <h3>Review</h3>
+          <p>
+            Peer reviewers evaluate evidence quality, argument coherence, ethics reporting, and contribution to the
+            field.
+          </p>
+        </section>
+
+        <section class="panel step-card">
+          <div class="step-number" aria-hidden="true">3</div>
+          <h3>Decision</h3>
+          <p>
+            Authors receive a decision letter with required revisions, optional recommendations, and timeline
+            expectations.
+          </p>
+        </section>
+
+        <section class="panel step-card">
+          <div class="step-number" aria-hidden="true">4</div>
+          <h3>Publish</h3>
+          <p>
+            Accepted manuscripts proceed to copyediting, metadata checks, licensing confirmation, and publication.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container content-columns">
+      <div class="panel prose-panel">
+        <div class="prose">
+          <h2>Before you submit</h2>
+          <ul>
+            <li>Prepare an abstract, keywords, and article type selection.</li>
+            <li>Include received/accepted history only if resubmitted from a prior review cycle.</li>
+            <li>Document ethics review status and any data-sharing limitations.</li>
+            <li>Provide a DOI only if already assigned (for versions or linked materials).</li>
+          </ul>
+
+          <h2>Submission form</h2>
+          <p>
+            Use the placeholder form link below for the demo. In production, replace it with your Google Form,
+            editorial system, or custom endpoint.
+          </p>
+          <p>
+            <a class="button" href="https://forms.google.com/" target="_blank" rel="noreferrer">
+              Open submission form (placeholder)
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <aside class="panel info-card">
+        <div class="notice">
+          <strong>Demo limitation</strong>
+          <p>
+            This page does not submit data. It demonstrates structure, process communication, and front-end
+            editorial UX only.
+          </p>
+        </div>
+
+        <div>
+          <h2>Editorial targets (demo)</h2>
+          <ul class="timeline">
+            <li>
+              <div>
+                <strong>Desk decision</strong>
+                <span>Within 7 calendar days</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>First review decision</strong>
+                <span>Within 21 calendar days</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Production turnaround</strong>
+                <span>Within 10 business days after acceptance</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</SiteLayout>
