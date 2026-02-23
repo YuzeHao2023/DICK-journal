@@ -1,5 +1,7 @@
 ---
+import { EDITOR_EMAIL, PAY_QR_PUBLIC_FILE, hasPayQrImage } from "../lib/contact";
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { withBase } from "../lib/paths";
 ---
 
 <SiteLayout
@@ -97,6 +99,60 @@ import SiteLayout from "../layouts/SiteLayout.astro";
             <li>No institutional billing or seat management</li>
           </ul>
         </section>
+      </div>
+
+      <div class="panel panel--padded" style="margin-top: 1rem;">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Payment & Contact</span>
+            <h2 class="section-title">Manual demo payment contact flow</h2>
+            <p class="section-subtitle">
+              This demo does not process payments. Use the QR code and email instructions below only as a UI example.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="prose">
+            <h3>Editor contact</h3>
+            <p>
+              Email the editor: <a href={`mailto:${EDITOR_EMAIL}`}>{EDITOR_EMAIL}</a>
+            </p>
+            <p>
+              If you pay, email a screenshot plus your GitHub username/identifier. If you cannot pay, email the
+              editor.
+            </p>
+            <div class="notice">
+              <strong>Demo disclaimer</strong>
+              <p>
+                This is a demo; it does not process real payments; access is not automatically provisioned; and no
+                sensitive payment data is collected.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom: 0.6rem;">QR code</h3>
+            {hasPayQrImage ? (
+              <img
+                src={withBase(PAY_QR_PUBLIC_FILE)}
+                alt="Payment QR code for demo support"
+                width="260"
+                height="260"
+                loading="lazy"
+                style="border-radius: 14px; border: 1px solid var(--line); background: white;"
+              />
+            ) : (
+              <div class="notice">
+                <strong>QR image missing</strong>
+                <p>
+                  Place the file at <span class="inline-code">public/pay-qr.png</span> to display the QR code in this
+                  module.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   </section>

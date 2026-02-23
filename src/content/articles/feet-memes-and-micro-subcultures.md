@@ -1,14 +1,12 @@
 ---
 title: "Feet, Memes, and Micro-Subcultures: How Foot Fetish Signifiers Travel in Contemporary Pop Culture"
 authors:
-  - "Mina R. Sloane"
-  - "Jerome P. Castillo"
+  - "Cardo"
 articleType: "Research"
 accessRoute: "OA"
 published: "2026-01-19"
 received: "2025-10-08"
 accepted: "2025-12-21"
-doi: "10.5555/dick.2026.001"
 license: "CC BY 4.0"
 keywords:
   - "memes"
@@ -16,12 +14,15 @@ keywords:
   - "stigma management"
   - "subculture signifiers"
   - "pop culture circulation"
-abstract: "This article studies how foot-fetish signifiers circulate in mainstream digital culture without relying on explicit content analysis. Using a mixed corpus of memes, comment threads, and moderation notices, we analyze how users negotiate stigma, irony, and recognizability while platforms attempt to govern context-sensitive references."
+abstract: "This fictional demo article simulates a methodologically framed study of how foot-fetish signifiers circulate in mainstream digital culture without explicit content analysis. The corpus design, coding language, and moderation framing are illustrative examples for UI and workflow demonstration."
 pdfUrl: "https://example.org/dick/2026/feet-memes-and-micro-subcultures.pdf"
 columns:
   - "foot-fetish"
 contentWarning: "Discussion of stigmatized sexualized subcultural references and platform moderation language; no explicit material."
+demo: true
 ---
+
+> **Demo notice.** This is fictional/demo content for UI and workflow demonstration. It is not a real study; citations/data are illustrative.
 
 ## Introduction
 

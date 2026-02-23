@@ -22,6 +22,7 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
     <span class={`badge ${article.data.accessRoute === "OA" ? "badge--oa" : "badge--non-oa"}`}>
       {article.data.accessRoute}
     </span>
+    {article.data.demo && <span class="badge">DEMO</span>}
     <span class="article-card__date">{formatArticleDate(article.data.published)}</span>
   </div>
 

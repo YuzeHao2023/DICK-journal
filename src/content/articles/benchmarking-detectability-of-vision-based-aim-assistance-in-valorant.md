@@ -1,15 +1,12 @@
 ---
 title: "Benchmarking the Detectability of Vision-Based Aim Assistance in Valorant: A Countermeasure-Oriented Protocol"
 authors:
-  - "Mei-Ling Zhou"
-  - "R. K. Solomon"
-  - "Aman Verghese"
+  - "Cardo"
 articleType: "Methods"
 accessRoute: "Non-OA"
 published: "2025-12-03"
 received: "2025-08-14"
 accepted: "2025-11-05"
-doi: "10.5555/dick.2025.014"
 license: "Publisher copyright; benchmarking appendices available to reviewers under controlled access"
 keywords:
   - "anti-cheat"
@@ -17,11 +14,14 @@ keywords:
   - "detection protocol"
   - "false positives"
   - "competitive integrity"
-abstract: "We propose a countermeasure-oriented protocol for benchmarking the detectability of suspected vision-based aim assistance in Valorant-like environments. The protocol emphasizes synthetic and consented data collection, false-positive analysis, and evaluation reporting standards suitable for anti-cheat teams, auditors, and academic reviewers."
+abstract: "This fictional demo article presents an illustrative, countermeasure-oriented protocol for benchmarking the detectability of suspected vision-based aim assistance in Valorant-like environments. The methods framing, dataset design, and evaluation language are included to demonstrate UI and editorial workflow behavior."
 columns:
   - "game-cheating-and-countermeasures"
 contentWarning: "Discussion of cheating detection and enforcement systems from an anti-cheat evaluation perspective; no construction or evasion guidance."
+demo: true
 ---
+
+> **Demo notice.** This is fictional/demo content for UI and workflow demonstration. It is not a real study; citations/data are illustrative.
 
 ## Purpose and Scope
 

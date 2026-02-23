@@ -29,6 +29,7 @@ const articles = defineCollection({
     pdfUrl: z.string().optional(),
     columns: z.array(z.string()),
     contentWarning: z.string().optional(),
+    demo: z.boolean().optional(),
   }),
 });
 

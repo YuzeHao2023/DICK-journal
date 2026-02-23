@@ -1,13 +1,12 @@
 ---
-title: "From First-Year Graduate Student to Professor’s Spouse: Power, Policy, and Narratives in Academic Relationships"
+title: "From First-Year Graduate Student to Professor's Spouse: Power, Policy, and Narratives in Academic Relationships"
 authors:
-  - "Elena Morris"
+  - "Cardo"
 articleType: "Opinion"
 accessRoute: "OA"
 published: "2025-10-27"
 received: "2025-09-02"
 accepted: "2025-10-05"
-doi: "10.5555/dick.2025.011"
 license: "CC BY 4.0"
 keywords:
   - "academic ethics"
@@ -15,12 +14,15 @@ keywords:
   - "conflicts of interest"
   - "institutional policy"
   - "narrative framing"
-abstract: "This opinion essay examines how academic communities narrate relationships that move from supervisory or evaluative proximity to marriage or family ties. It argues that institutions need language and policy tools that can address power asymmetry, conflicts of interest, and reputational dynamics without reducing every case to rumor or silence."
+abstract: "This fictional demo opinion essay simulates a reflective analysis of how academic communities narrate relationships that move from supervisory or evaluative proximity to marriage or family ties. The policy framing and ethical vocabulary are illustrative and included for UI/workflow demonstration."
 pdfUrl: "https://example.org/dick/2025/from-first-year-graduate-student-to-professors-spouse.pdf"
 columns:
   - "lab-informal-norms"
 contentWarning: "Discussion of power imbalance, conflicts of interest, and institutional responses to sensitive relationship narratives."
+demo: true
 ---
+
+> **Demo notice.** This is fictional/demo content for UI and workflow demonstration. It is not a real study; citations/data are illustrative.
 
 ## Why This Topic Is Difficult to Discuss
 

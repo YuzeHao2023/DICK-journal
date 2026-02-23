@@ -9,6 +9,7 @@ import {
   sortArticlesDesc,
   type ArticleEntry,
 } from "../../lib/articles";
+import { EDITOR_EMAIL, PAY_QR_PUBLIC_FILE, hasPayQrImage } from "../../lib/contact";
 import { withBase } from "../../lib/paths";
 
 interface Props {
@@ -48,6 +49,7 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
           <span class={`badge ${article.data.accessRoute === "OA" ? "badge--oa" : "badge--non-oa"}`}>
             {article.data.accessRoute}
           </span>
+          {article.data.demo && <span class="badge">DEMO</span>}
         </div>
 
         {article.data.columns.length > 0 && (
@@ -72,6 +74,11 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
         <div class="article-abstract">
           <span class="eyebrow">Abstract</span>
           <p>{article.data.abstract}</p>
+          {article.data.demo && (
+            <p class="article-submeta">
+              Demo article - fictional content used to demonstrate layout.
+            </p>
+          )}
         </div>
 
         {article.data.contentWarning && (
@@ -123,6 +130,41 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
             <div class="cta-row">
               <a class="button" href={withBase("membership/")}>View membership options</a>
               <a class="button button--secondary" href={withBase("articles/")}>Browse other articles</a>
+            </div>
+
+            <div class="panel panel--padded" style="margin-top: 0.9rem;">
+              <h3>Payment &amp; Contact</h3>
+              <p>
+                Contact the editor at <a href={`mailto:${EDITOR_EMAIL}`}>{EDITOR_EMAIL}</a>.
+              </p>
+              <p>
+                If you pay, email a screenshot plus your GitHub username/identifier. If you cannot pay, email the
+                editor.
+              </p>
+
+              {hasPayQrImage ? (
+                <img
+                  src={withBase(PAY_QR_PUBLIC_FILE)}
+                  alt="Payment QR code for demo support"
+                  width="220"
+                  height="220"
+                  loading="lazy"
+                  style="margin-top: 0.5rem; border-radius: 12px; border: 1px solid var(--line); background: white;"
+                />
+              ) : (
+                <div class="notice" style="margin-top: 0.75rem;">
+                  <strong>QR image missing</strong>
+                  <p>
+                    Place the file at <span class="inline-code">public/pay-qr.png</span> to display the payment QR
+                    code.
+                  </p>
+                </div>
+              )}
+
+              <p class="article-submeta" style="margin-top: 0.75rem;">
+                Demo disclaimer: this page does not process real payments, access is not automatically provisioned,
+                and no sensitive payment data is collected.
+              </p>
             </div>
           </div>
         </article>
@@ -184,18 +226,16 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
               <dt>License</dt>
               <dd>{article.data.license ?? "Not specified"}</dd>
             </div>
-            <div class="meta-item">
-              <dt>DOI</dt>
-              <dd>
-                {doiUrl ? (
+            {doiUrl && (
+              <div class="meta-item">
+                <dt>DOI</dt>
+                <dd>
                   <a class="text-link" href={doiUrl} target="_blank" rel="noreferrer">
                     {article.data.doi}
                   </a>
-                ) : (
-                  "Not assigned"
-                )}
-              </dd>
-            </div>
+                </dd>
+              </div>
+            )}
             <div class="meta-item">
               <dt>Keywords</dt>
               <dd>
