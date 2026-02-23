@@ -32,7 +32,6 @@ const Content = renderedArticle?.Content;
 
 const citation = buildCitation(article);
 const bibtex = buildBibtex(article);
-const doiUrl = article.data.doi ? `https://doi.org/${article.data.doi}` : null;
 
 const allColumns = await getCollection("columns");
 const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, column.data.title]));
@@ -43,6 +42,13 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
     <div class="container">
       <div class="panel article-header-card">
         <span class="eyebrow">Article</span>
+
+        {article.data.demo && (
+          <div class="notice" style="margin-top: 0.6rem;">
+            <strong>DEMO CONTENT - fictional / illustrative. Not peer-reviewed.</strong>
+            <p>{article.data.demoNote ?? "Demo article for interface and workflow testing."}</p>
+          </div>
+        )}
 
         <div class="article-actions">
           <span class="badge badge--type">{article.data.articleType}</span>
@@ -98,12 +104,6 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
               Download PDF
             </button>
           )}
-
-          {doiUrl && (
-            <a class="button button--secondary" href={doiUrl} target="_blank" rel="noreferrer">
-              View DOI
-            </a>
-          )}
         </div>
       </div>
     </div>
@@ -133,19 +133,23 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
             </div>
 
             <div class="panel panel--padded" style="margin-top: 0.9rem;">
-              <h3>Payment &amp; Contact</h3>
+              <h3>Support / Payment</h3>
               <p>
-                Contact the editor at <a href={`mailto:${EDITOR_EMAIL}`}>{EDITOR_EMAIL}</a>.
+                Demo patronage UI for a method-serious, topic-unserious journal. Support is framed as patronage for
+                editorial labor and curation, not real subscription billing infrastructure.
               </p>
               <p>
                 If you pay, email a screenshot plus your GitHub username/identifier. If you cannot pay, email the
-                editor.
+                editor. We still expect ethics, consent, non-harm, and defensive research framing in submissions.
+              </p>
+              <p>
+                Or contact the Editor-in-Chief: <a href={`mailto:${EDITOR_EMAIL}`}>{EDITOR_EMAIL}</a>
               </p>
 
               {hasPayQrImage ? (
                 <img
                   src={withBase(PAY_QR_PUBLIC_FILE)}
-                  alt="Payment QR code for demo support"
+                  alt="Support or patronage QR code for the demo journal"
                   width="220"
                   height="220"
                   loading="lazy"
@@ -155,8 +159,8 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
                 <div class="notice" style="margin-top: 0.75rem;">
                   <strong>QR image missing</strong>
                   <p>
-                    Place the file at <span class="inline-code">public/pay-qr.png</span> to display the payment QR
-                    code.
+                    Place the file at <span class="inline-code">public/payments/qr.png</span> to display the support
+                    QR code.
                   </p>
                 </div>
               )}
@@ -226,16 +230,6 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
               <dt>License</dt>
               <dd>{article.data.license ?? "Not specified"}</dd>
             </div>
-            {doiUrl && (
-              <div class="meta-item">
-                <dt>DOI</dt>
-                <dd>
-                  <a class="text-link" href={doiUrl} target="_blank" rel="noreferrer">
-                    {article.data.doi}
-                  </a>
-                </dd>
-              </div>
-            )}
             <div class="meta-item">
               <dt>Keywords</dt>
               <dd>

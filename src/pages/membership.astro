@@ -104,23 +104,28 @@ import { withBase } from "../lib/paths";
       <div class="panel panel--padded" style="margin-top: 1rem;">
         <div class="section-header">
           <div>
-            <span class="eyebrow">Payment & Contact</span>
-            <h2 class="section-title">Manual demo payment contact flow</h2>
+            <span class="eyebrow">Support / Payment</span>
+            <h2 class="section-title">Demo patronage flow for rigorous work on unserious domains</h2>
             <p class="section-subtitle">
-              This demo does not process payments. Use the QR code and email instructions below only as a UI example.
+              This is a demo monetization UI. It represents support / patronage for editorial work rather than a real
+              billing system.
             </p>
           </div>
         </div>
 
         <div class="grid-2">
           <div class="prose">
-            <h3>Editor contact</h3>
+            <h3>Support / Payment</h3>
             <p>
-              Email the editor: <a href={`mailto:${EDITOR_EMAIL}`}>{EDITOR_EMAIL}</a>
+              We encourage unconventional research domains while maintaining serious methods, ethics, consent, and
+              non-harm standards in editorial review.
             </p>
             <p>
               If you pay, email a screenshot plus your GitHub username/identifier. If you cannot pay, email the
               editor.
+            </p>
+            <p>
+              Or contact the Editor-in-Chief: <a href={`mailto:${EDITOR_EMAIL}`}>{EDITOR_EMAIL}</a>
             </p>
             <div class="notice">
               <strong>Demo disclaimer</strong>
@@ -136,7 +141,7 @@ import { withBase } from "../lib/paths";
             {hasPayQrImage ? (
               <img
                 src={withBase(PAY_QR_PUBLIC_FILE)}
-                alt="Payment QR code for demo support"
+                alt="Support or patronage QR code for the demo journal"
                 width="260"
                 height="260"
                 loading="lazy"
@@ -146,8 +151,8 @@ import { withBase } from "../lib/paths";
               <div class="notice">
                 <strong>QR image missing</strong>
                 <p>
-                  Place the file at <span class="inline-code">public/pay-qr.png</span> to display the QR code in this
-                  module.
+                  Place the file at <span class="inline-code">public/payments/qr.png</span> to display the QR code in
+                  this module.
                 </p>
               </div>
             )}

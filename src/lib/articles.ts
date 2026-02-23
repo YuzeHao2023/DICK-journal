@@ -83,10 +83,6 @@ export function buildBibtex(article: ArticleEntry): string {
     ["abstract", article.data.abstract],
   ];
 
-  if (article.data.doi) {
-    fields.push(["doi", article.data.doi]);
-  }
-
   if (article.data.license) {
     fields.push(["note", `License: ${article.data.license}`]);
   }

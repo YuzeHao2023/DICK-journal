@@ -1,0 +1,133 @@
+---
+import { EDITOR_EMAIL } from "../lib/contact";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { withBase } from "../lib/paths";
+
+const leaders = [
+  {
+    name: "Cardo",
+    role: "Editor-in-Chief",
+    image: withBase("editors/cardo.jpg"),
+    alt: "Headshot of Cardo, Editor-in-Chief",
+    bio: "Cardo leads the journal's editorial direction with a focus on methodologically rigorous work in culturally 'non-serious' domains. Editorial decisions emphasize documentation quality, defensible inference, ethics, and auditability over topic prestige.",
+  },
+  {
+    name: "Nicholas C.F",
+    role: "Deputy Editor",
+    image: withBase("editors/nicholas-cf.jpg"),
+    alt: "Headshot of Nicholas C.F, Deputy Editor",
+    bio: "Nicholas C.F oversees review workflows, methods consistency, and standards for submissions in memetic, subcultural, taboo-adjacent, and emerging topic areas. He prioritizes transparent scope definition, non-harm framing, and reproducible editorial reasoning.",
+  },
+];
+
+const openRoles = [
+  "Managing Editor",
+  "Copy Editor",
+  "Art Director",
+  "Systems Editor",
+  "Community Editor",
+];
+---
+
+<SiteLayout
+  title="Team"
+  description="Editorial leadership, vacant roles, and applications for column editors and guest editors."
+>
+  <section class="page-head">
+    <div class="container">
+      <div class="panel page-head__panel">
+        <span class="eyebrow">Team</span>
+        <h1>Editorial leadership and masthead</h1>
+        <p>
+          A premium demo masthead for a method-serious, topic-unserious journal: rigorous process for culturally
+          "non-serious" topics, with sober editorial standards and clear ethical boundaries.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        {leaders.map((leader) => (
+          <article class="panel">
+            <div style="padding: 1rem;">
+              <img
+                src={leader.image}
+                alt={leader.alt}
+                loading="lazy"
+                width="720"
+                height="720"
+                style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg-strong) 85%, transparent);"
+              />
+              <div style="margin-top: 0.9rem;">
+                <div class="article-actions" style="margin-top: 0;">
+                  <span class="badge badge--type">{leader.role}</span>
+                </div>
+                <h2 class="section-title" style="margin-top: 0.35rem;">{leader.name}</h2>
+                <p class="section-subtitle" style="margin-top: 0.5rem;">{leader.bio}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <section class="panel prose-panel">
+        <div class="prose">
+          <h2>Open roles (vacant)</h2>
+          <p>
+            The roles below are intentionally marked vacant in this demo interface. Applications are reviewed based on
+            editorial judgment, methods literacy, and capacity to work on unconventional subjects without lowering
+            evidentiary standards.
+          </p>
+          <ul>
+            {openRoles.map((role) => (
+              <li>
+                <strong>{role}</strong>: Vacant - apply via email (<a href={`mailto:${EDITOR_EMAIL}`}>{EDITOR_EMAIL}</a>)
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="panel prose-panel">
+        <div class="prose">
+          <h2>Column Editors &amp; Guest Editors</h2>
+          <p>
+            Column editors and guest editors can apply by emailing <a href={`mailto:${EDITOR_EMAIL}`}>{EDITOR_EMAIL}</a>.
+          </p>
+          <p>
+            Becoming a column editor / guest editor increases visibility, helps you shape emerging domains, and
+            positions you early in frontier topics.
+          </p>
+          <p>
+            We are especially interested in editors who can maintain method-serious review standards while working on
+            memetic culture, subcultural governance, phrase pragmatics, tacit norms, and other domains often treated
+            as marginal or unserious by traditional venues.
+          </p>
+          <div class="notice">
+            <strong>Editorial expectations</strong>
+            <p>
+              Applications should demonstrate comfort with ethics review language, non-harm framing, documentation
+              standards, and defensive/countermeasure-oriented treatment of risk-sensitive topics.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel panel--padded">
+        <p class="footer-copy">
+          DEMO SITE - roles and people shown are part of a demonstration interface.
+        </p>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

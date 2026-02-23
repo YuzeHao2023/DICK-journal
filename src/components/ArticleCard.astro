@@ -53,10 +53,5 @@ const columnTitleBySlug = new Map(allColumns.map((column) => [column.slug, colum
     <a class="text-link" href={href}>
       Read article
     </a>
-    {article.data.doi && (
-      <a class="text-link muted-link" href={`https://doi.org/${article.data.doi}`} target="_blank" rel="noreferrer">
-        DOI
-      </a>
-    )}
   </div>
 </article>

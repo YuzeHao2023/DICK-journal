@@ -19,6 +19,7 @@ columns:
   - "game-cheating-and-countermeasures"
 contentWarning: "Discussion of cheating detection and enforcement systems from an anti-cheat evaluation perspective; no construction or evasion guidance."
 demo: true
+demoNote: "This is demo content for a fictional journal site."
 ---
 
 > **Demo notice.** This is fictional/demo content for UI and workflow demonstration. It is not a real study; citations/data are illustrative.

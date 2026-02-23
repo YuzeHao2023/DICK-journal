@@ -22,7 +22,6 @@ const articles = defineCollection({
     published: z.coerce.date(),
     received: z.coerce.date().optional(),
     accepted: z.coerce.date().optional(),
-    doi: z.string().optional(),
     license: z.string().optional(),
     keywords: z.array(z.string()),
     abstract: z.string(),
@@ -30,6 +29,7 @@ const articles = defineCollection({
     columns: z.array(z.string()),
     contentWarning: z.string().optional(),
     demo: z.boolean().optional(),
+    demoNote: z.string().optional(),
   }),
 });
 

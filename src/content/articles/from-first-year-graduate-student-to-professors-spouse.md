@@ -20,6 +20,7 @@ columns:
   - "lab-informal-norms"
 contentWarning: "Discussion of power imbalance, conflicts of interest, and institutional responses to sensitive relationship narratives."
 demo: true
+demoNote: "This is demo content for a fictional journal site."
 ---
 
 > **Demo notice.** This is fictional/demo content for UI and workflow demonstration. It is not a real study; citations/data are illustrative.
